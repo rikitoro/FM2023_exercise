@@ -66,4 +66,9 @@ example :
   ((((P → P) → Q) → (P → P → Q)) → R) →
   (((P → P → Q) → ((P → P) → Q)) → R) → R :=
   by
-  sorry
+  intro _ h2 _
+  apply h2
+  intro h4 hP _
+  apply h4
+  intro _
+  apply hP
