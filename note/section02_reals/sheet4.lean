@@ -27,8 +27,10 @@ example (a b x y : ℝ) (h1 : a < x) (h2 : b < y) : a + b < x + y :=
 
 example (ε : ℝ) (hε : 0 < ε) : 0 < ε / 3 :=
   by
-  refine div_pos hε ?_
-  norm_num
+  have h : (0 : ℝ) < 3 := by
+    norm_num
+  exact div_pos hε h
+
 
 example (a b c d x y : ℝ) (h1 : a + c < x) (h2 : b + d < y) :
   a + b + c + d < x + y :=
