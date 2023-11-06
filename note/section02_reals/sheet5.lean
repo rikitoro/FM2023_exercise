@@ -61,13 +61,12 @@ theorem tends_to_add {a b : ℕ → ℝ} {t u : ℝ}
     exact le_of_max_le_right hn
   apply ha'' at hNan
   apply hb'' at hNbn
-  have h''' : a n + b n - (t + u) = a n - t + (b n - u) :=
-    by linarith
   calc
     |a n + b n - (t + u)|
       = |(a n - t) + (b n - u)| :=
       by
-      rw [h''']
+      apply congrArg
+      ring
     _ ≤ |a n - t| + |b n - u|   :=
       by
       exact abs_add (a n - t) (b n - u)
@@ -76,5 +75,5 @@ theorem tends_to_add {a b : ℕ → ℝ} {t u : ℝ}
       exact add_lt_add hNan hNbn
     _ = ε                       :=
       by
-      simp
+      ring
   done
