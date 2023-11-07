@@ -1,15 +1,16 @@
 import Mathlib.Tactic
 
--- import note.section02_reals.sheet4
--- limit of a(n) as n → ∞ is t
-def tends_to (a : ℕ → ℝ) (t : ℝ) : Prop :=
-  ∀ ε > 0, ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε
+import FM2023Exrcise.section02_reals.sheet3
 
-theorem tends_to_def {a : ℕ → ℝ} {t : ℝ} :
-  tends_to a t ↔
-  ∀ ε, 0 < ε → ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε :=
-  by
-  rfl
+-- limit of a(n) as n → ∞ is t
+-- def tends_to (a : ℕ → ℝ) (t : ℝ) : Prop :=
+--   ∀ ε > 0, ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε
+
+-- theorem tends_to_def {a : ℕ → ℝ} {t : ℝ} :
+--   tends_to a t ↔
+--   ∀ ε, 0 < ε → ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε :=
+--   by
+--   rfl
 
 theorem tends_to_neg {a : ℕ → ℝ} {t : ℝ} (ha : tends_to a t) :
   tends_to (λ n => - a n) (-t) :=
