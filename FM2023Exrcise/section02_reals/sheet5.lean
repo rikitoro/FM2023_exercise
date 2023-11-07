@@ -78,3 +78,11 @@ theorem tends_to_add {a b : ℕ → ℝ} {t u : ℝ}
       by
       ring
   done
+
+theorem tends_to_sub {a b : ℕ → ℝ} {t u : ℝ}
+  (ha : tends_to a t) (hb : tends_to b u) :
+  tends_to (λ n => a n - b n) (t - u) :=
+  by
+  have hb' := tends_to_neg hb
+  have h'  := tends_to_add ha hb'
+  apply h'
