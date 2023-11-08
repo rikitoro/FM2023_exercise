@@ -59,5 +59,9 @@ example (h : ∀ g : G, g * g = 1) : ∀ g h : G, g * h = h * g :=
   intro g₁ g₂
   have hg1 := h g₁
   have hg2 := h g₂
-  sorry
+  rw [mul_eq_one_iff_eq_inv] at hg1
+  rw [mul_eq_one_iff_eq_inv] at hg2
+  have hg1g2 := h (g₁ * g₂)
+  rw [mul_eq_one_iff_eq_inv] at hg1g2
+  rw [hg1g2, mul_inv_rev, ← hg1, ← hg2]
   done
